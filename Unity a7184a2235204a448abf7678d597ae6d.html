@@ -1,0 +1,774 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unity</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a7184a22-3520-4a44-8abf-7678d597ae6d" class="page sans"><header><h1 class="page-title">Unity</h1><p class="page-description"></p></header><div class="page-body"><p id="1ba1ce42-8903-4c34-a01a-aba82a52994c" class="">Unity è un motore per lo sviluppo di giochi versatile che consente di creare esperienze interattive in tempo reale, in particolare può essere anche molto immediato per lo sviluppo di prototipi.</p><p id="37d40860-6efa-4d9c-af3c-3a9c3491344b" class="">
+</p><h2 id="df9dc6c2-e30e-40e9-b9e0-1c615efc82d6" class="">Perché usare Unity</h2><ol type="1" id="1ad74b9e-f13e-4ab8-b7cb-aaebf371fadf" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">Facilità d’uso:</mark></strong>  è potente e facile da usare. Unity è un IDE ovvero un ambiente di sviluppo integrato quindi potete costruire il vostro gioco usando l’interfaccia integrata, navigando cartelle di vostri assets e trascinando e rilasciando gli elementi che vi servono per costruire una scena.</li></ol><ol type="1" id="adfcf3a9-a761-4bdd-a5fb-5098fcd93ce3" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Risparmiare tempo:</mark></strong>  Oltre ad offrire un motore di gioco già pronto e personalizzabile(motore che non deve essere sviluppato da zero da un apposito team), offre un&#x27;ampia gamma di tecnologie, tool e librerie gratuite per velocizzare lo sviluppo della maggior parte di tipi di gioco(funzionalità integrate come fisica, rendering, rilevamento delle collisioni, ecc ecc)</li></ol><ol type="1" id="5e2b3e67-b788-4ac5-b23f-976bea257d16" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Scripting :</mark></strong>  Il linguaggio di programmazione usato per lo scripting è C#(OOP), Unity di base fornisce molte classi e API. La buona notizia è che si può fare moltissimo senza dover gestire molto codice.</li></ol><ol type="1" id="5ac99157-73e8-4414-a49d-06db0627fe11" class="numbered-list" start="4"><li><strong><mark class="highlight-orange">Prototipare:</mark></strong>  Essendo immediato da usare(editor e scripting) e mettendo a disposizione  tool e librerie è possibile creare prototipi molto velocemente.</li></ol><ol type="1" id="29beb0ee-386f-40cd-bd40-9e09fe41b248" class="numbered-list" start="5"><li><strong><mark class="highlight-orange">Personalizzazione:</mark></strong>   Ovviamente gli sviluppatori possono sviluppare tool e librerie più specifiche per realizzare il proprio gioco senza usare quelle fornite dal motore.</li></ol><ol type="1" id="c23de610-7ce1-48fb-94a4-48b77529c314" class="numbered-list" start="6"><li><strong><mark class="highlight-orange">Sviluppatori indipendenti:</mark></strong>  Le tecnologie più avanzate offerte da Unity permettono di sviluppare titoli in grado di competere con aziende più grandi</li></ol><ol type="1" id="8768b47d-99f1-41c5-a28d-812d53890d00" class="numbered-list" start="7"><li><strong><mark class="highlight-orange">Tutorial ufficiali:</mark></strong>  Unity offre una serie di tutorial ufficiali sulle tecnologie e gli strumenti dell&#x27;editor, compresi i design pattern di programmazione, disponibili sul loro canale YouTube. Inoltre da qualche tempo Unity.<ol type="a" id="65a93cea-e5f0-479a-835f-a670e4ad6620" class="numbered-list" start="1"><li><mark class="highlight-teal">Sicuramente non avrete tempo di adottare un design pattern per il vostro progetto. Ma vi ricordo che se volete diventare dei professionisti l&#x27;uso dei design pattern aiuta gli sviluppatori a scrivere codice più pulito, più flessibile, più facilmente manutenibile e comprensibile, promuovendo anche la riusabilità del codice e la standardizzazione delle pratiche di sviluppo. In sostanza, sono strumenti potenti per migliorare la qualità complessiva del software.</mark></li></ol></li></ol><ol type="1" id="93807bbf-5d12-420a-a58d-20be901b531b" class="numbered-list" start="8"><li><strong><mark class="highlight-orange">Community enorme ed attiva sul web:</mark></strong>  grazie alla vastità della community è possibile trovare una guida per qualsiasi cosa e anche per la maggior parte dei problemi che potreste incontrare</li></ol><ol type="1" id="158d17a0-4507-4d0e-abf8-40432453f83c" class="numbered-list" start="9"><li><strong><mark class="highlight-orange">Multipiattaforma:</mark></strong>  consente di esportare su varie piattaforme (Web, Windows, Android, macOS, Linux, iOS, PlayStation, Xbox, Nintendo Switch) </li></ol><ol type="1" id="1cf2b5b3-fa71-4200-aaeb-85d52a8eca98" class="numbered-list" start="10"><li><strong><mark class="highlight-orange">Assets store: </mark></strong>è possibile vendere assets o vendere assets sull’assets store.</li></ol><ol type="1" id="8e80c5e0-51c1-46ca-9ac9-ff9af84cb828" class="numbered-list" start="11"><li><strong><mark class="highlight-orange">Tante possibilità:</mark></strong><mark class="highlight-orange"> </mark>Unity è più di un motore di gioco, potete creare contenuti 3D interattivi in tempo reale. Ad oggi sviluppatori di giochi, artisti, architetti, progettisti automobilistici, cineasti e molti altri usano Unity</li></ol><ol type="1" id="1cd9ad0f-c49a-4f14-9264-3f0b039ec6e1" class="numbered-list" start="12"><li><strong><mark class="highlight-orange">Gratis(non completamente):</mark></strong><mark class="highlight-orange"> </mark>Pubblicare i propri contenuti con unity è gratuito sotto una certa soglia di installazioni. È possibile informarsi sulle tariffe sul sito ufficiale. </li></ol><ol type="1" id="4a2ff6ec-5532-4f06-8dc6-e4a56d75dc9e" class="numbered-list" start="13"><li><mark class="highlight-red"><strong>Bonus</strong></mark><strong><mark class="highlight-orange">/Unity Muse(pagamento):</mark></strong>  Unity offre in abbonamento uno strumento basato su AI, interrogabile in linguaggio naturale(simile a chat gpt), utilizzabile da sviluppatori con qualsiasi grado di esperienza che permette di velocizzare il processo di realizzazione di un prototipo di gioco permettendo di: <ol type="a" id="658a1941-936c-4e74-b487-cb9c6cc4585f" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Idee e risolvere problemi:</strong></mark>  Risolvi problemi complessi, ottenere idee per il tuo progetto e  analizzare e generare il codice che scrivete.</li></ol><ol type="a" id="de18c096-884d-4fce-a122-e0e99e700b39" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Sprite e assets:</strong></mark>  Creare sprite e texture in base a parametri specificati nel prompt</li></ol><ol type="a" id="fd959c3b-0582-449e-a7a5-d02af0c03502" class="numbered-list" start="3"><li><mark class="highlight-purple"><strong>Animare:</strong></mark>  Animare personaggi umanoidi con pochi suggerimenti di testo, risparmiando ore di configurazioni tradizionali, progettate sia per aspiranti che per animatori esperti</li></ol><ol type="a" id="a476de05-17cd-4754-87f7-0ad556a1acf5" class="numbered-list" start="4"><li><mark class="highlight-purple"><strong>Behavior:</strong></mark>  Possibiltà di descrivere i comportamenti delle vostre entità di gioco e far prendere vita le vostre entità tramite alberi di comportamento</li></ol></li></ol><ol type="1" id="a8c7be62-e8a6-40df-8c70-57833d7cbb1b" class="numbered-list" start="14"><li><mark class="highlight-red"><strong>Bonus</strong></mark><strong><mark class="highlight-orange">/(WEB)Partership Google:</mark></strong>  Unity ha da poco intrapreso una partnership con google per il supporto di web application(anche browser mobili) compilabili da Unity. Questo permetterà di esportare interi progetti in app eseguibili su browser web. Questa partership permette di utilizzare api chiamata WebGPU che permette di esporre fino al browser la capacità di calcolo della GPU in maniera efficiente. Immaginare la possibilità di far provare o di distribuire le vostre esperienze interattive a qualsiasi utente senza dover passare la distribuzione degli store dei dispostivi.</li></ol><h2 id="35dac626-d416-4e8f-ba10-60a7c55282f5" class="">Installazione Editor</h2><ol type="1" id="2b1bb2ee-44af-4a2a-8460-7cfe650deb55" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">Scaricare e installare Unity Hub:</mark></strong> consente di gestire i tuoi progetti e di installare le versioni di unity</li></ol><ol type="1" id="c3cd6922-06c7-4e62-9efb-f43e6a5366fa" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Installare versione di Unity(LTS):</mark></strong> Unity LTS (Long Term Support) è una versione di Unity che offre massima stabilità e supporto per i tuoi progetti. Installare tramite hub la versione di unity che useremo per la creazione del nostro prototipo/gioco</li></ol><ol type="1" id="f260c3b9-8f2e-4875-9aca-f368d9fb269c" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Scelta dei componenti:</mark></strong> Scegliere i moduli essenziali per lo sviluppo del prototipo. In questo caso sarà essenziale selezionare il Dev tools IDE visual studio, è gli sdk della piattaforma di destinazione su cui pensate di far girare il vostro gioco. (consigliati android e windows)<figure id="1d207027-34d9-4f88-ac13-98f261c8a66e" class="image"><a href="modules.jpeg"><img style="width:680px" src="modules.jpeg"/></a></figure></li></ol><p id="00ab11b9-7108-4665-9fae-cf07de086bf2" class=""> </p><h2 id="7df38dbf-a74a-4564-92d1-9ff19d0098c0" class="">Creazione progetto e assets</h2><ol type="1" id="7c499b56-1675-42a7-be31-a8dd49057b91" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">Creare nuovo progetto 2D:</mark></strong> Crea un nuovo progetto dall’Hub di Unity e tra i template seleziona “2D (Built-In Render Pipeline). Conterrà il numero minimo di tool utile a questo tutorial.</li></ol><ol type="1" id="b78f56da-04d1-4e62-bc9c-82cd4e85e52c" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Scaricare gli assets:</mark></strong> Assets utili a costruire le scene del nostro esempio.<br/>Usare il link: <br/><a href="https://drive.google.com/file/d/1VfwIRqDaxyp-t7_1nubnTiTgwLJrqAHz/view">https://drive.google.com/file/d/1VfwIRqDaxyp-t7_1nubnTiTgwLJrqAHz/view</a><br/>oppure:<br/><figure id="33dcf690-5939-4147-803c-16120390a23f"><div class="source"><a href="Pong_Assets.zip">Pong Assets.zip</a></div></figure><figure id="4fabb68a-0c73-4c62-ab98-f52b9a67fdd1" class="image"><a href="pong_assets.svg"><img style="width:288px" src="pong_assets.svg"/></a></figure></li></ol><ol type="1" id="be7fa573-4b13-4e02-9f57-0497c8d472c1" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Importare gli sprite:</mark></strong> Dopo aver scaricato lo zip con gli assets, dalla scheda “<em>Project</em>” dell’editor di unity creare una nuova cartella sprite e inserire all’interno il contenuto del file zip.</li></ol><h2 id="584e2524-aa20-4c46-99bb-4ecd919913a1" class="">Configurazione della scena</h2><ol type="1" id="ff33c8ec-cff1-4458-a848-dcd699d151f5" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">Inserire gli sprite nella scena:</mark></strong> Trascinare uno per uno gli sprite nella finestra dell’editor chiamata “<em>Hierarchy</em>”</li></ol><ol type="1" id="36bd9b52-1ee0-47a0-88ba-23356de9eb92" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Aspect Ratio: </mark></strong>Nella finestra dell’editor usiamo l’aspect ratio 16:9 per comodità, si potrebbe usare qualsiasi formato. (Idealmente un gioco multipiattaforma dovrebbe potersi adattare a qualsiasi formato/risoluzione)</li></ol><ol type="1" id="822beece-12a4-47b2-b260-ba8aa1adc0d5" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Sfondo/bound gioco(</mark></strong><em><strong><mark class="highlight-orange">Basic Background</mark></strong></em><strong><mark class="highlight-orange">):</mark></strong> Nella finestra “<em>Hierarchy</em>” selezionare il gameobject “<em>Basic Background</em>” e dalla finestra “<em>inspector</em>” modificare/aggiungere i seguenti componenti<ol type="a" id="28b30b6a-c546-42d3-982a-eeea15342da7" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Transform:</strong></mark> Selezionare il componente <code>Transform </code>dalla finestra <em>Inspector </em>dell’editor e modificare il valore dell’attributo <code>Scale</code> del gameobject (.7, .7, .7) in modo che si adatti a schermo. (questi valori che stiamo impostando sarebbero come dei parametri del costruttore del gameobject che verrà istanziato a runtime)</li></ol><ol type="a" id="e361ffa2-752f-4823-9e4c-c09db421bc39" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Collider:</strong></mark> aggiungere il componente polygon collider 2D. Questo componente calcola quali sono i contorni del gameobject su cui calcolare le collisioni. Lo fa partendo dai pixel dello sprite che non sono trasparenti(ovviamente con una certa tolleranza rispetto ai pixel alpha)</li></ol></li></ol><ol type="1" id="53751f77-aa59-43c5-b95a-c10c0146c80c" class="numbered-list" start="4"><li><strong><mark class="highlight-orange">Palla gioco(</mark></strong><em><strong><mark class="highlight-orange">Basic Ball</mark></strong></em><strong><mark class="highlight-orange">): </mark></strong>selezionare il gameObject della palla<ol type="a" id="15c29510-3505-4e74-81ba-1db6c12ce430" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Collider:</strong></mark> aggiungere il componente <code>circle collider 2D</code></li></ol><ol type="a" id="c8306a74-bbcf-48bd-a353-441fb03d27d3" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Rigidbody 2D:</strong></mark> aggiungere il componente <code><em>Rigidbody 2D</em></code><em>. </em>Questo componente coinvolgerà questo gameobject nel calcolo della fisica nell’intera scena. Questo permette di subire la gravità, la fisica degli altri gameobject e a sua volta di influenzare gli altri gameobject che dispongono di fisica nella scena<ol type="i" id="48ace212-13a6-4f92-a1c3-edff06a85e71" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong>Settare attributi Rigidbody 2D:</strong></mark> non vogliamo che la palla subisca alcuna forza di gravità. Quindi settare l’attributo <code><em>Gravity Scale</em></code><em> </em>del componente <code><em>RigidBody</em></code><em> </em>a 0.</li></ol><ol type="i" id="131a817d-e499-415e-852c-9439a44a15c1" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>Qualità Collision Detection:</strong></mark> Il valore di default per l’attributo <code>Collision Detection</code> è <code>Discrete</code> . Questa è computazionalmente meno impegnativa ma meno affidabile per i gameobject che si muovono rapidamente e subiscono collisioni come nel caso della palla. Quindi impostiamo l’attributo in <code>Continuos</code> per la collision detection.</li></ol><ol type="i" id="66bddf3b-e0e1-46e2-b2bc-ecd20f7748a7" class="numbered-list" start="3"><li><mark class="highlight-blue"><strong>Vincoli sulla rotazione:</strong></mark> Non ci interessa che l’oggetto ruoti sull’asse Z quindi selezioniamo l’asse <code>Z</code> nell’attributo <code>Constraints</code>, <code>Freeze Rotation</code><br/><br/></li></ol><ol type="i" id="be4623cc-0a9f-4df0-ace2-2e98ee096055" class="numbered-list" start="4"><li><mark class="highlight-blue"><strong>Creare 2D/PhysicsMaterial2D:</strong></mark> Creiamo un nuovo physics material 2D(asset) configuriamo con <em>friction = 0 </em>e <em>bounciness = 1. </em>Trasciniamo questa configurazione di materiale fisico all’interno del componente fisica della palla<br/><br/></li></ol></li></ol></li></ol><ol type="1" id="76a3dc76-b83f-46b7-834f-4814a5e292db" class="numbered-list" start="5"><li><strong><mark class="highlight-orange">Racchette(</mark></strong><em><strong><mark class="highlight-orange">Basic Racket-AI)</mark></strong></em><strong><mark class="highlight-orange">: </mark></strong>selezionare il gameObject della racchetta<ol type="a" id="07183821-bd11-4a29-9fb4-5602b8d25ae0" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Transformer:</strong></mark> spostiamo la racchetta di gioco modificando l’attributo <code>position </code>del componente <code>Transform</code> (7.5, 0, 0)</li></ol><ol type="a" id="f7a16d5b-df6e-49c4-a7d1-2dad5402f15b" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Sdoppiamo la racchetta:</strong></mark> sdoppiamo la racchetta e spostiamola alle coordinate opposte (-7.5, 0, 0)</li></ol><ol type="a" id="81fade77-8dba-4b45-a214-6363e01e345d" class="numbered-list" start="3"><li><mark class="highlight-purple"><strong>Rinominiamo racchetta:</strong></mark> cambiamo il nome di una racchetta in AI Racket</li></ol><ol type="a" id="66c01168-0135-4ab3-b539-da271503f9e2" class="numbered-list" start="4"><li><mark class="highlight-purple"><strong>Box Collider:</strong></mark> aggiungere il componente <code>Box Collider 2D</code></li></ol><ol type="a" id="caf10d2a-53f5-433c-b2a7-2d128d51fa0d" class="numbered-list" start="5"><li><mark class="highlight-purple"><strong>Rigidbody 2D:</strong></mark> aggiungere il componente <code><em>Rigidbody 2D</em></code><ol type="i" id="ca5033c9-942a-45df-9196-588509f516f4" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong>Settare parametri Rigidbody 2D:</strong></mark> azzeriamo forza di gravità. Quindi<code><em>Gravity Scale</em></code><em> </em>del componente <code><em>RigidBody</em></code><em> </em>a 0.</li></ol><ol type="i" id="0f0dbd00-c397-4c36-b810-32040478877e" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>Qualità Collision Detection:</strong></mark>  <code>Collision Detection</code> in <code>Continuos</code>.</li></ol><ol type="i" id="62b9fd21-0c28-4d65-97ae-da83124680a9" class="numbered-list" start="3"><li><mark class="highlight-blue"><strong>Vincoli sulla rotazione:</strong></mark> Non ci interessa che l’oggetto ruoti sull’asse X, Z quindi in <code>Constraints</code>, <code>Freeze Rotation</code> blocchiamo asse X,Z<br/><br/></li></ol></li></ol></li></ol><h2 id="dddffe9f-288a-47f1-a311-5aacb6342a44" class="">Scripting racchette</h2><ol type="1" id="d6056752-83fa-4b3c-921a-34c21ecb0551" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">RacketController:</mark></strong> Creare una cartella nel progetto Script, e creare un nuovo C# script chiamato <code>RacketController</code> , spiegazione dei metodi ereditati da <code>MonoBehavior</code>. MonoBehavior è una classe base da cui derivano molti metodi importanti di Unity inerenti ai gameObjects.</li></ol><ol type="1" id="2f8205fa-6ddd-4aff-844a-6ae6d240122b" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Metodi principali ereditati:</mark></strong> I metodi principali ereditati da <code>MonoBehavior</code><ol type="a" id="23f5eaf8-d776-4552-9a32-d02e67f99ad0" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Start():</strong></mark><strong><mark class="highlight-orange"> </mark></strong>Viene chiamato prima del primo aggiornamento del frame. Viene comunemente utilizzato per inizializzare variabili o per eseguire la configurazione del gioco.</li></ol><ol type="a" id="6f07ffd7-fd42-4544-acf3-97b565df111e" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Update():</strong></mark><strong><mark class="highlight-orange"> </mark></strong>Questo metodo viene chiamato una volta per frame. È il luogo ideale per gestire la logica di gioco</li></ol><ol type="a" id="ebc120c6-6212-4613-8523-fc6b7ace4ac6" class="numbered-list" start="3"><li><mark class="highlight-purple"><strong>FixedUpdate():</strong></mark><strong><mark class="highlight-orange"> </mark></strong>Viene chiamato a intervalli di tempo fissi. È il luogo ideale per gestire qualsiasi codice legato alla fisica, come l’applicazione di forze a un oggetto.</li></ol></li></ol><ol type="1" id="53ab80de-92ee-405c-8f90-d32d53d643ff" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Serializzazione dei parametri:</mark></strong> La serializzazione dei parametri permette di esporre parametri nel componente dello Script da cui possiamo modificare direttamente i valori con cui vengono inizializzati i parametri a runtime. Usare <code>[SerializeField]</code> prima della dichiarazione di un parametro per esporlo nell’editor(non confondere con il livello di accessibilità public e private della classe!)<ol type="a" id="4cdfc382-d5e2-4359-a0a3-e805213967ad" class="numbered-list" start="1"><li><mark class="highlight-purple"><strong>Costante enumerativa:</strong></mark> creare una costante enumerativa ed elencare le costanti <code>Player,AI_1,AI_2,</code> . Dichiariamo la costante enumerativa. Questo attributo servirà e selezionare il tipo di comportamento che la racchetta avrà.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dcfb6a76-52a6-4861-b468-d3713311a4bd" class="code"><code class="language-C#">// costanti enumerative
+private enum RacketType {
+    Player,
+    AI_1,
+}
+
+// la serializzazione espone in editor il valore da inizalizzare dell&#x27;attributo
+[SerializeField] private RacketType racketType = RacketType.Player;</code></pre></li></ol><ol type="a" id="3719a174-2ac4-47f9-adae-82dc0278b3bb" class="numbered-list" start="2"><li><mark class="highlight-purple"><strong>Velocità racchetta:</strong></mark> dichiariamo un attributo per la velocità del movimento della racchetta, (float, serializzato). Impostiamo da editor la velocità della racchetta(player = 12, AI = 5)<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fbd652a5-32fa-4907-baea-4b41b3d35b87" class="code"><code class="language-C#">[SerializeField] private float speed;</code></pre></li></ol><ol type="a" id="acfe8162-e90c-46f3-9b56-4d07f914771d" class="numbered-list" start="3"><li><mark class="highlight-purple"><strong>Gameobject palla:</strong></mark> dichiariamo variabile che conterrà l’istanza della palla di gioco da cui prenderemo le informazioni che la racchetta AI potrà usare per il suo behavior. <br/>Dopo aver salvato lo script, trascinare dall’editor la palla della scena all’interno dell’attributo dichiarato ora esposto nello Script/componente creato.<br/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20389ad0-8e13-4538-80dc-22fa57e66bb6" class="code"><code class="language-C#">[SerializeField] private GameObject ball;</code></pre></li></ol><ol type="a" id="1e92a648-0b35-48a8-a4d8-60b05884671f" class="numbered-list" start="4"><li><mark class="highlight-purple"><strong>Attributi e configurazione:</strong></mark> altri attributi necessari dello script della rachetta. Nello <code>Start()</code> assegnamo alla variabile <code>rb</code> l’istanza del componente <code>RigidBody2D</code> della gameobject della racchetta<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4e9f61c7-4311-4400-b10e-9ee12a6367f3" class="code"><code class="language-C#">private Rigidbody2D rb;
+private Vector2 racketMove;
+
+
+// Viene comunemente utilizzato per inizializzare variabili o
+// per eseguire la configurazione del gioco.
+void Start()
+{
+    rb = GetComponent&lt;Rigidbody2D&gt;();
+}</code></pre></li></ol><ol type="a" id="f375180c-45f9-41da-9124-d0a46a6a239b" class="numbered-list" start="5"><li><mark class="highlight-purple"><strong>FixedUpdate:</strong></mark> È il metodo ideale per gestire qualsiasi codice legato alla fisica, in questo caso per aggiornare la velocità del componente <code>Rigidbody2D </code>della racchetta. Moltiplichiamo il vettore che rappresenta il verso della racchetta per lo scalare speed in modo da poter configurarne la velocità.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5fd08595-8073-46cd-870c-7401dea7cb90" class="code"><code class="language-C#">private void FixedUpdate() {
+    rb.velocity = racketMove * speed;
+}</code></pre></li></ol><ol type="a" id="68da1e18-ea59-487a-8f0a-3f1de25ce4d8" class="numbered-list" start="6"><li><mark class="highlight-purple"><strong>Behavior racchette:</strong></mark> Creiamo due metodi in cui verranno eseguiti i due comportamenti che la racchetta potrà avere<ol type="i" id="d5161e50-95a0-457f-98ba-877d7180c859" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong>PlayerBehavior:</strong></mark><mark class="highlight-blue"> </mark>Se la racchetta sarà del giocatore, dovremo catturare l’input e trasformarlo in un  vettore che rappreseterà il verso(come fosse un versore) della velocità della racchetta e testiamo il risultato.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e5b4269c-3f40-4948-bed3-2257c1d38054" class="code"><code class="language-C#">private void PlayerBehavior() {
+
+		// input sugli assi direzionali verticali
+		float yAxis = Input.GetAxisRaw(&quot;Vertical&quot;); 
+		
+		// aggiornamento vettore velocity della racchetta
+    racketMove = new Vector2 (0, yAxis);
+}</code></pre></li></ol><ol type="i" id="5f168d85-d799-407b-9e03-bf18614aaf72" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>AIBehavior:</strong></mark> Semplicemente la racchetta AI cercherà  di compensare la distanza tra la racchetta.y +- offset e la pallina.y.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a83d1443-668a-49a9-9470-f6cb35fba35f" class="code"><code class="language-C#">private void AIBehavior() {
+    if(ball.transform.position.y &gt; transform.position.y + .5) {
+        racketMove = new Vector2(0, 1);
+
+    } else if(ball.transform.position.y &lt; transform.position.y - .5) {
+        racketMove = new Vector2(0, -1);
+
+    } else {
+        racketMove = new Vector2(0, 0);
+    }
+}</code></pre></li></ol></li></ol></li></ol><h2 id="9588ba60-ab8f-4804-a94a-8ec081d0f102" class="">Scripting palla</h2><p id="ee701640-6d7b-4da7-b514-3f9f911e4794" class="">Creiamo un nuovo script per la palla e codifichiamo il suo comportamento. </p><p id="ce02a670-da8a-4193-9536-74bf93753f78" class="">L’idea è che man mano che <code>hitCounter</code> viene incrementato la velocità della palla deve incrementare anche lei rendendo la partita più avvincente.</p><p id="9af7de6f-f576-442b-9772-278e1baf73b5" class="">
+</p><ol type="1" id="17dfa420-8884-4969-9d2d-5ab14bde6ae8" class="numbered-list" start="1"><li><strong><mark class="highlight-orange">Attributi:</mark></strong> Gli attributi dello script della palla saranno:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="75d99039-c054-4ce4-b03d-a8f12ee09c8d" class="code"><code class="language-C#">[SerializeField] private float initialSpeed = 6f;
+[SerializeField] private const float speedIncrease = 0.25f;
+
+private int hitCounter = 0; // contatore di collisioni con racchette
+private Rigidbody2D rb;</code></pre></li></ol><ol type="1" id="dfe0d94f-2632-4731-ba22-f6e47237b425" class="numbered-list" start="2"><li><strong><mark class="highlight-orange">Behavior Start:</mark></strong> La palla parte in direzione del giocatore con una certa velocità iniziale<br/><br/><mark class="highlight-teal">**la velocity di un rigidbody è un vettore che rappresenta la velocità dell’oggetto in movimento. È un vettore (</mark><mark class="highlight-teal"><code>Vector3</code></mark><mark class="highlight-teal">) che ha sia direzione che grandezza.**</mark><figure id="ea2ddc0f-f68a-474d-9396-73dd63fab8cf" class="image"><a href="velocity.gif"><img style="width:212px" src="velocity.gif"/></a></figure><ul id="e601ce40-9d90-42e9-a2e3-53fcb8d0b482" class="bulleted-list"><li style="list-style-type:disc"><code>new Vector2 (1, 0)</code> è un vettore che rappresenta le informazioni sul verso della palla</li></ul><ul id="5eda6c97-4dba-462a-ad82-dc9561c4b75d" class="bulleted-list"><li style="list-style-type:disc">tutto il vettore direzione viene moltiplicato per la velocità a cui deve viaggiare la palla <code>(initialSpeed + (hitCounter * speedIncrease))</code>, quando moltiplichiamo questa formula al vettore direzione questo si “allunga” facendo viaggiare l’oggetto a velocità maggiore. La lunghezza del vettore velocity rappresenta quindi l’intensità</li></ul><ul id="c0b01182-b005-49a7-96f4-4d4c9cf36ee7" class="bulleted-list"><li style="list-style-type:disc">la velocità di partenza della palla è <code>initialSpeed </code></li></ul><ul id="54e67d1f-dea5-4170-a99a-8bafd342e43d" class="bulleted-list"><li style="list-style-type:disc"><code>+ (hitCounter * speedIncrease)</code> rappresenta l’incremento di velocità della pallina</li></ul><ul id="cd5eb475-c0f8-4b28-8ac7-d0be73937835" class="bulleted-list"><li style="list-style-type:disc"><code>hitCounter</code> contatore dei colpi di racchette, ed è usato come fattore che duplica, triplica e così via l’incremento di velocità <code>speedIncrease</code>. </li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4832bd6b-1a1f-4e54-9321-b9db149e943c" class="code"><code class="language-C#">// new Vector2 (1, 0) 
+rb.velocity = new Vector2 (1, 0) * (initialSpeed + (hitCounter * speedIncrease));</code></pre><figure id="acc6f543-b0e4-4959-90e3-cd841b731484" class="image"><a href="velocityIncrement.gif"><img style="width:336px" src="velocityIncrement.gif"/></a></figure><p id="5b3dd87a-004f-43ca-a89c-7e57b0b75ff9" class="">
+</p></li></ol><ol type="1" id="1f6eac7b-02ae-4869-a347-b679b8ecd11f" class="numbered-list" start="3"><li><strong><mark class="highlight-orange">Behavior movimento:</mark></strong> Nel FixedUpdate(chiamato a intervalli di tempo fissi usato per la fisica, slegato dal framerate, metodo ereditato) codifichiamo il comportamento della palla in movimento. <br/><br/>Il modulo del vettore velocity(rigidBody) della palla sarà limitato superiormente dal metodo<br/><code>ClampMagnitude</code>. Ovvero la velocità della palla non potrà mai essere maggiore di questa formula<code>initialSpeed + (hitCounter * speedIncrease)<br/><br/></code><mark class="highlight-teal">** questo viene fatto perchè ad esempio alcune collisioni della palla con oggetti in movimento potrebbero aumentare la velocità della palla facendola andare al di fuori del controllo dalle meccaniche di gioco. Noi sviluppatori di videogiochi vogliamo che sia tutto sotto controllo e che le meccaniche di gioco si rompano!**</mark><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="470e3775-13aa-4e4f-9fad-ef52eb929b5f" class="code"><code class="language-C#">private void FixedUpdate()
+{
+		// correggiamo ad ogni intervallo fisico il vettore velocity della palla
+    // limitando superiormente la magnitudine(modulo) della velocità della palla
+    rb.velocity = Vector2.ClampMagnitude(
+        rb.velocity, // vettore su cui applicare il clamp
+        initialSpeed + (hitCounter * speedIncrease) // valore massimo
+    );
+}</code></pre><p id="0c6d112e-69b5-440b-9823-b67c1b1d27a5" class="">
+</p></li></ol><ol type="1" id="88ca96aa-c61b-446d-a94e-33e89c3b9a69" class="numbered-list" start="4"><li><strong><mark class="highlight-orange">Behavior collisioni:</mark></strong> Ogni volta che avviene una collisione con una racchetta il vettore velocity della palla deve essere ricalcolato in base a quanto la palla è distante dal centro della racchetta.  Codifichiamo il metodo che si occuperà di codificare questo comportamento<br/><br/><mark class="highlight-teal">**ricordo che il velocity di un rigidbody è un vettore che rappresenta la velocità dell’oggetto in movimento. È un vettore che ha sia direzione che grandezza.**<br/><br/></mark>L’idea su come ricalcolare il vettore velocity è questa: <br/>Dopo che la palla collide con la racchetta, la direzione e il verso della pallina saranno calcolati rispetto a quanto distante dal centro della racchetta è la palla.<br/><br/>- Il componente vettoriale <br/><mark class="highlight-teal"><em>w </em></mark>non si ottiene sottraendo alla y della palla, la y della racchetta.<br/>- Il componente <br/><em><mark class="highlight-red">v </mark></em><mark class="highlight-default">sarà semplicemente -1 se la x della palla positiva, 1 altrimenti.<br/>Otterremo il vettore risultante <br/></mark><em><mark class="highlight-orange">VersoPalla </mark></em><mark class="highlight-default">che sarà il nuovo verso che la palla assumerà dopo aver colliso con la racchetta</mark><figure id="a6038673-3f7a-4d1a-9d68-8429d0221fef" class="image"><a href="calcoloVerso.gif"><img style="width:480px" src="calcoloVerso.gif"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="46e32e06-37fa-4a5c-b663-2aebfb9073ca" class="code"><code class="language-C#">// questo metodo viene chiamato ogni volta che la palla collide con una racchetta
+// verrà ricalcolata la traiettoria 
+private void CalculateTrajectory(Vector2 rackectCenterPosition) {
+    
+    Vector2 ballPos = transform.position;
+    float newXDirection, newYDirection; // componenti vettore direzione palla
+
+
+    // direzione palla della x
+    if(transform.position.x &gt; 0) {
+        newXDirection = -1;
+    } else {
+        newXDirection= 1;
+    }
+
+    // calcolo direzione palla della y
+    newYDirection = ballPos.y - rackectCenterPosition.y;
+    
+    // correzione direzione y palla, evita che direzione della palla sia quasi
+    // dritta quando colpisce il centro della racchetta
+    if(Mathf.Abs(newYDirection) &lt; 0.1) {
+        
+        if(float.IsNegative(newYDirection)) {
+            newYDirection = 0.15f;
+        } else {
+            newYDirection = -0.15f;
+        }
+        
+    }
+
+    rb.velocity = new Vector2(newXDirection, newYDirection) * (initialSpeed + (hitCounter * speedIncrease));
+}</code></pre></li></ol><ol type="1" id="012fd87a-41dd-4854-9063-79a4ffabb761" class="numbered-list" start="5"><li><strong><mark class="highlight-orange">Rilevare la collisione:</mark></strong> Questo metodo viene attivato quando viene rilevata una collisione sul collider della palla. Semplicemente se chi sta collidendo con la palla sono le racchette allora viene, incrementato l’hitCounter e viene ricalcolata la traiettoria della palla<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d7fbadd3-d2cd-456b-a137-0ea73ca95da5" class="code"><code class="language-C#">private void OnCollisionEnter2D(Collision2D collision) {
+    if(collision.gameObject.name == &quot;Player Racket&quot; ||
+     collision.gameObject.name == &quot;AI Racket&quot;) {
+		    
+		    hitCounter++;
+        CalculateTrajectory(collision.transform.gameObject.transform.position);
+    }
+}</code></pre></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
